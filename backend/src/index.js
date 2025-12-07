@@ -6,7 +6,16 @@ dotenv.config({path:'./env'});
 //SECOND APPROACH
 
 import connectDB from './db/check.js';
-connectDB();
+//the connection is async await and returns a promise so we can put try and then on it
+connectDB().
+then(()=>{
+    app.listen(process.env.PORT || 8000 ,()=>{
+    console.log(`Server is running at ${process.env.PORT}`);})
+}).
+catch((error)=>{
+    console.log("COnnection falied !!!!!!");
+    
+});
 
 
 
