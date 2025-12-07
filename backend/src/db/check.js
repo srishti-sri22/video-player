@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
-import { DB_NAME } from '../constants.js';
 
 const connectDB = async () => {
   try {
     const connectionInstance = await mongoose.connect(
-      `${process.env.MONGODB_URI}/${DB_NAME}`
+      `mongodb+srv://srishtisri224:Srishti2204@cluster0.blz3c21.mongodb.net/videoplayer`
     );
 
     console.log(

@@ -1,21 +1,44 @@
-// require('dotenv').config({path: './env'});
+
 import dotenv from 'dotenv';
-dotenv.config({path:'./env'});
+dotenv.config();
 
-
-//SECOND APPROACH
-
+console.log(process.env.MONGODB_URI)
+import { app } from './app.js';
 import connectDB from './db/check.js';
-//the connection is async await and returns a promise so we can put try and then on it
-connectDB().
-then(()=>{
-    app.listen(process.env.PORT || 8000 ,()=>{
-    console.log(`Server is running at ${process.env.PORT}`);})
-}).
-catch((error)=>{
-    console.log("COnnection falied !!!!!!");
+
+connectDB()
+  .then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+      console.log(`Server is running at ${process.env.PORT}`);
+    });
+  })
+  .catch(() => {
+    console.log("Connection failed !!!!!!");
+  });
+
+
+
+
+
+// require('dotenv').config({path: './env'});
+// import dotenv from 'dotenv';
+// dotenv.config({path:'./env'});
+// import { app } from './app.js'; 
+
+
+// //SECOND APPROACH
+
+// import connectDB from './db/check.js';
+// //the connection is async await and returns a promise so we can put try and then on it
+// connectDB().
+// then(()=>{
+//     app.listen(process.env.PORT || 8000 ,()=>{
+//     console.log(`Server is running at ${process.env.PORT}`);})
+// }).
+// catch((error)=>{
+//     console.log("COnnection falied !!!!!!");
     
-});
+// });
 
 
 

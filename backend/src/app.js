@@ -17,4 +17,15 @@ app.use(express.static("public"))
 
 app.use(cookieParser())
 
+
+
+//routes
+
+import userRouter from "./routes/user.routes.js";
+
+//routes declaration
+//sice the router is now outside , so we will use the middleware to use the routes
+
+app.use("/api/v1/users", userRouter);
+ 
 export {app};
