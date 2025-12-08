@@ -259,6 +259,8 @@ const generateAccessAndRefreshToken = async(userId)=>{
         throw new ApiError(400, "Error while uploading on cloudinary"); 
     }
 
+    //we can add to delete the avatar and the cover image from the CLoudinary after the new one has been uplaoded, since we have the url to it
+
      const user = await User.findByIdAndUpdate(req.user?._id,{
         $set:{
             avatar: avatar.url
