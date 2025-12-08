@@ -54,6 +54,7 @@ const generateAccessAndRefreshToken = async(userId)=>{
     let coverLocalPath;
     if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length>0){
          coverLocalPath = req.files.coverImage[0].path;}
+    console.log("Cover local path is: ",coverLocalPath);
 
     if(!avatarLocalPath){
         throw new ApiError(400, "Avatar file is required");
@@ -273,7 +274,9 @@ const generateAccessAndRefreshToken = async(userId)=>{
  })
 
  const updateUserCoverImage = asyncHandler(async(req,res)=>{
-    const coverLocalPath = req.file?.path;
+    const coverLocalPath = await req.file?.path;
+    console.log("COVER LOCAL PATH IS :" , coverLocalPath);
+    
     if(!coverLocalPath){
         throw new ApiError(401,"Cover image missing");
     }
